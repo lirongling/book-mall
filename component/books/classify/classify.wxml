@@ -1,0 +1,10 @@
+<!-- component/books/classify/classify.wxml -->
+<view class="container">
+  <view class="title">{{name}}</view>
+  <view class="flex j-star f-wrap">
+    <view class="item flex j-center f-column a-center" wx:for="{{male}}" wx:key="index" data-name="{{item.name}}" bind:tap="goCar">
+      <view class="item-name">{{item.name}}</view>
+      <view class="item-count">{{item.bookCount}}本</view>
+    </view>
+  </view>
+</view>

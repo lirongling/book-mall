@@ -1,0 +1,11 @@
+<view class="top flex s-between">
+  <view class="top-left">
+    <image src="../../accets/images/edit.png" class="left-img" mode="widthFix" />
+  </view>
+  <view class="top-right flex s-between">
+    <view class="help" bind:tap="help">帮助</view>
+    <view class="refresh">
+      <image src="../../accets/images/refresh.png" class="right-img" mode="widthFix" />
+    </view>
+  </view>
+</view>

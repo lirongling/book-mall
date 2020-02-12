@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "indexTop": "../../component/index/indexTop"
+    }
+}

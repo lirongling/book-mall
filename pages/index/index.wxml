@@ -1,0 +1,7 @@
+<!-- index.wxml -->
+<view class="container">
+  <view>
+    <indexTop></indexTop>
+  </view>
+  <view class="no-collection flex j-center">主人还没收藏书籍哟，请去书城收藏吧</view>
+</view>

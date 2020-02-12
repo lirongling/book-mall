@@ -1,0 +1,19 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.big-classify {
+    border-bottom: 1rpx rgb(226, 223, 223) solid;
+}
+
+.big-item {
+    padding: 0 8px;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.active {
+    color: #D81E06;
+}

@@ -1,0 +1,33 @@
+.box {
+    position: relative;
+    padding: 10px;
+    background: rgb(235, 229, 229);
+}
+
+.item {
+    margin: 0 10px;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    height: 2px;
+    background: darksalmon;
+}
+
+.active {
+    border-bottom: darksalmon 2px solid;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    top: 80rpx;
+    left: 0;
+}

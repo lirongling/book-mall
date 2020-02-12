@@ -1,0 +1,17 @@
+<view class="box flex s-around">
+  <view class="item" hover-class="item-hover" bindtap="clickItem" data-index="{{index}}" wx:for="{{arr}}" wx:key="index">
+    <view class="title">
+      {{item.name}}
+      <view class="line" wx:if="{{indexItem===index}}"></view>
+    </view>
+  </view>
+  <view class="content " wx:if="{{indexItem===0}}">
+    <classify male='{{classifyData.male}}' name="男生" gender="male"></classify>
+    <classify male='{{classifyData.female}}' name="女生" gender="female"></classify>
+    <classify male='{{classifyData.picture}}' name="出版" gender="picture"></classify>
+    <classify male='{{classifyData.press}}' name="励志" gender="press"></classify>
+  </view>
+  <view class="content " wx:if="{{indexItem===1}}">
+    <ranking></ranking>
+  </view>
+</view>

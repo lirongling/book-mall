@@ -1,0 +1,29 @@
+@import "../../../app.wxss";
+.container {
+    margin-bottom: 20rpx;
+    width: 100%;
+}
+
+.title {
+    margin-left: 20rpx;
+    color: rgb(151, 144, 144);
+    line-height: 80rpx;
+}
+
+.item {
+    box-sizing: border-box;
+    width: 33.3%;
+    text-align: center;
+    height: 140rpx;
+    border: 1rpx rgb(226, 223, 223) solid;
+}
+
+.item-name {
+    /* font-weight: 550; */
+}
+
+.item-count {
+    margin-top: 8px;
+    font-size: 30rpx;
+    color: rgb(164, 165, 165);
+}

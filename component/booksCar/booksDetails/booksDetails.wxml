@@ -1,0 +1,16 @@
+<wxs module="filter" src="./color.wxs"></wxs>
+<view class="containor flex j-star">
+  <view class="details-left">
+    <image class="img" src="{{details.cover}}" mode="widthFix" />
+  </view>
+  <view class="details-right flex s-between f-column ">
+    <view class="title">{{details.title}}</view>
+    <view class="author">{{details.author}}</view>
+    <view class="shortIntro ellipsis">{{details.shortIntro}}</view>
+    <view class="tag flex j-star">
+      <view class="tag-item" style="background-color:{{filter.color()}}" wx:for="{{details.tags}}" wx:key="index" wx:if="{{index<3}}">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

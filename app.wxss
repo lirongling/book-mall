@@ -1,0 +1,41 @@
+.flex {
+    display: flex
+}
+
+.j-star {
+    justify-content: flex-start;
+}
+
+.j-end {
+    justify-content: flex-end;
+}
+
+.j-center {
+    justify-content: center;
+}
+
+.f-column {
+    flex-direction: column;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.f-wrap {
+    flex-wrap: wrap;
+}
+
+.s-between {
+    justify-content: space-between;
+}
+
+.s-around {
+    justify-content: space-around;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

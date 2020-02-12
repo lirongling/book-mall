@@ -1,0 +1,18 @@
+// 支持es4语法
+var filter = {
+        numberToFixed: function(value) {
+            return value.toFixed(2)
+        },
+        color: function() {
+            var rgb1 = parseInt(Math.random() * 255);
+            var rgb2 = parseInt(Math.random() * 255);
+            var rgb3 = parseInt(Math.random() * 255);
+            var rag = 'rgb(' + rgb1 + ',' + rgb2 + ',' + rgb3 + ')';
+            return rag
+        }
+    }
+    // 导出对外暴露的属性
+module.exports = {
+    numberToFixed: filter.numberToFixed,
+    color: filter.color
+}

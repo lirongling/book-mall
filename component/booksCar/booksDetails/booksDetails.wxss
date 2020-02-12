@@ -1,0 +1,50 @@
+@import "../../../app.wxss";
+.containor {
+    width: 95%;
+    margin: 0 auto;
+    padding: 14rpx 0;
+    border-bottom: 1rpx rgb(226, 223, 223) solid;
+}
+
+.details-left {
+    flex: 1;
+}
+
+.img {
+    width: 100%;
+}
+
+.details-right {
+    padding: 0 5px;
+    flex: 2;
+}
+
+.title {
+    font-weight: 550;
+}
+
+.author {
+    color: rgb(116, 112, 112);
+    font-size: 30rpx;
+}
+
+.shortIntro {
+    color: rgb(116, 112, 112);
+    font-size: 30rpx;
+    width: 100%;
+    white-space: normal;
+    height: 120rpx;
+}
+
+.tag {
+    width: 100%;
+    overflow: hidden;
+}
+
+.tag-item {
+    font-size: 28rpx;
+    margin: 0 5px;
+    padding: 5rpx 14rpx;
+    border-radius: 8rpx;
+    color: white;
+}

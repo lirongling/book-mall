@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "classify": "../../component/books/classify/classify",
+        "ranking": "../../component/books/ranking/ranking"
+    }
+}

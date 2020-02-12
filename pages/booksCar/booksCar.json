@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "booksDetails": "../../component/booksCar/booksDetails/booksDetails"
+    }
+}
