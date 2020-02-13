@@ -20,6 +20,13 @@ Component({
             let rag = `rgb(${rgb1},${rgb2},${rgb3})`;
             return rag
 
+        },
+        goTo(e) {
+            console.log(e);
+            let bid = e.currentTarget.dataset.bid
+            wx.navigateTo({
+                url: `/pages/details/details?bid=${bid}`,
+            });
         }
     },
     created: function() {

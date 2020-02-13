@@ -1,19 +1,23 @@
-<view class="container">
+<view class="container flex f-column">
   <view class="">
     <view class="big-classify flex j-star f-wrap">
       <view class="big-item {{indexItem===index ? 'active' : ''}}" wx:for="{{typeList}}" data-ids="{{item.id}}" bindtap="clickItem" data-index="{{index}}" wx:key="index">
         {{item.name}}
       </view>
     </view>
-    <view class="big-classify flex j-star f-wrap">
-      <view class="big-item {{indexItems===index ? 'active' : ''}}" wx:for="{{smallClassify}}" data-ids="{{item}}" bindtap="clickItems" data-index="{{index}}" wx:key="index">
-        {{item}}
-      </view>
+    <view class="big-classify ">
+      <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+        <view class="big-item big-items {{indexItems===index ? 'active' : ''}}" wx:for="{{smallClassify}}" data-ids="{{item}}" bindtap="clickItems" data-index="{{index}}" wx:key="index">
+          {{item}}
+        </view>
+      </scroll-view>
     </view>
   </view>
-  <view class="content">
-    <view class="content-item" wx:for="{{booksData}}" wx:key="index">
-      <booksDetails details="{{item}}"></booksDetails>
-    </view>
+  <view class="content" id="index-nav">
+    <scroll-view enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight*2-116}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class="content-item" wx:for="{{booksData}}" wx:key="index">
+        <booksDetails details="{{item}}"></booksDetails>
+      </view>
+    </scroll-view>
   </view>
 </view>

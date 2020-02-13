@@ -1,0 +1,4 @@
+@import "../../../app.wxss";
+.img {
+    width: 55rpx;
+}

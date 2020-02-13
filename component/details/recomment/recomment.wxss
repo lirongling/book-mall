@@ -1,0 +1,20 @@
+@import "../../../app.wxss";
+.content-item {
+    width: 30%;
+}
+
+.img {
+    width: 100%;
+}
+
+.title {
+    margin: 20rpx auto;
+}
+
+.title-text {
+    color: rgb(36, 47, 197);
+}
+
+.title-img {
+    width: 70rpx;
+}

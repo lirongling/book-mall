@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "rate": "../../component/details/rate/rate",
+        "tabs": "../../component/comm/tabs/tabs",
+        "comments": "../../component/details/comments/comments",
+        "recomment": "../../component/details/recomment/recomment"
+    }
+}

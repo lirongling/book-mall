@@ -25,7 +25,31 @@ export default {
 
     getMinor() {
         return service.get('/cats/lv2')
+    },
+    // 书籍详情
+    // bookInfo: function(book_id) { // @param book_id 书籍id
+    //     return API_HOST + '/book/' + book_id
+    // },
+
+    bookInfo(book_id) {
+        return service.get(`/book/${book_id}`)
+    },
+    // 短评
+    // shortReviews: function (book_id) {  // @param book_id 书籍id    完整接口 ?book=5816b415b06d1d32157790b1&limit=20&total=true&start=0&sortType=hottest
+    //     return `${API_HOST}/post/short-review?book=${book_id}&total=true&sortType=newest`
+    // },
+    shortReviews(book_id, start) {
+        return service.get(`/post/short-review?book=${book_id}&limit=20&total=true&start=${start}&sortType=hottest`)
+    },
+    // 相关推荐
+    //  relatedRecommendedBooks: function (book_id) { // @param book_id 书籍id
+    //     return `${API_HOST}/book/${book_id}/recommend`
+    // },
+    relatedRecommendedBooks(book_id) {
+        return service.get(`book/${book_id}/recommend`)
     }
+
+
 
 
 }

@@ -1,5 +1,6 @@
 {
     "usingComponents": {
         "booksDetails": "../../component/booksCar/booksDetails/booksDetails"
-    }
+    },
+    "enablePullDownRefresh": true
 }

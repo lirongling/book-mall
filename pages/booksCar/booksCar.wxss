@@ -6,6 +6,8 @@
 
 .big-classify {
     border-bottom: 1rpx rgb(226, 223, 223) solid;
+    width: 100%;
+    min-height: 80rpx;
 }
 
 .big-item {
@@ -14,6 +16,32 @@
     text-align: center;
 }
 
+.big-items {
+    /* float: left; */
+    display: inline-block;
+}
+
 .active {
     color: #D81E06;
+}
+
+.scroll-view_H {
+    width: 100vw;
+    height: 80rpx;
+    overflow: hidden;
+    /* padding-right: 20rpx; */
+    background: #fff;
+    white-space: nowrap;
+    /* border: 1px solid red; */
+}
+
+.scroll-view_H scroll-view {
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+}
+
+.content {
+    max-height: 1043rpx;
+    min-height: 1003rpx;
 }

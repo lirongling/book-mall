@@ -1,0 +1,7 @@
+<view class="rate flex j-center">
+  <view wx:for="{{5}}" class="flex j-center" wx:key="index">
+    <image class="img " src="../../../accets/images/star-line.png" mode="widthFix" wx:if="{{(rating.score/2)<(index+1-0.5)}}" />
+    <image class="img" src="../../../accets/images/star-half.png" mode="widthFix" wx:elif="{{(rating.score/2)<index+1}}" />
+    <image class="img" src="../../../accets/images/star-fill.png" mode="widthFix" wx:elif="{{(rating.score/2)>=(index+1)}}" />
+  </view>
+</view>

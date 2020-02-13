@@ -1,0 +1,97 @@
+.top {
+    height: 180rpx;
+    background: #D81E06;
+}
+
+.introduce {
+    position: relative;
+    margin-top: -150rpx;
+    z-index: 2;
+}
+
+.introduce-img {
+    width: 40%;
+}
+
+.img {
+    width: 100%;
+    box-shadow: 1px 1px 10px #999;
+}
+
+.name {
+    margin: 15rpx;
+    font-weight: 550;
+    font-size: 34rpx;
+}
+
+.author {
+    margin-bottom: 60rpx;
+    color: #999;
+}
+
+.content {
+    background: #F6F8F8;
+    position: relative;
+}
+
+.btn {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    top: 0;
+    transform: translateY(-50%)!important;
+}
+
+.btns {
+    width: auto;
+    width: 240rpx;
+    height: 80rpx;
+    border-radius: 16rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: rgb(212, 56, 56);
+    color: rgb(34, 30, 34);
+}
+
+.add {
+    margin-left: 80rpx;
+    background: rgb(204, 74, 23);
+}
+
+.rate {
+    margin: 10rpx 0;
+}
+
+.last {
+    padding-top: 20rpx;
+    padding-bottom: 40rpx;
+}
+
+.last-text {
+    color: rgb(98, 43, 199);
+    margin-left: 10rpx;
+    width: 430rpx;
+}
+
+.bottom {
+    background: white;
+}
+
+.tabs {
+    border: 1rpx rgb(226, 223, 223) solid;
+}
+
+.content {
+    padding: 15rpx;
+    background: white;
+}
+
+.chapter {
+    background: #F6F8F8;
+    margin: 20rpx;
+    padding: 10rpx;
+}
+
+.chapter-img {
+    width: 60rpx;
+}

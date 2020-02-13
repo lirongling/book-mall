@@ -5,6 +5,12 @@ Page({
     /**
      * 页面的初始数据
      */
+    onShareAppMessage() {
+        return {
+            title: 'scroll-view',
+            path: 'page/component/pages/scroll-view/scroll-view'
+        }
+    },
     data: {
         indexItem: 0,
         indexItems: 0,
@@ -35,34 +41,60 @@ Page({
         smallClassify: [],
         minor: null,
         type: 'hot',
+        start: 0,
+        toView: 'green',
+        contentHeight: 0
 
 
 
+    },
+    scrollToTop() {
+        this.setAction({
+            scrollTop: 0
+        })
+    },
+    upper(e) {
+        console.log(e);
+    },
+    lower(e) {
+        this.getCatsBook()
     },
     getCatsBook() {
         wx.showLoading({
             title: '加载中',
         });
-        api.getCatsBooks(this.data.gender, this.data.type, this.data.major, 0, this.data.minor).then(res => {
+        api.getCatsBooks(this.data.gender, this.data.type, this.data.major, this.data.start, this.data.minor).then(res => {
             console.log(res);
             if (res.ok) {
+                if (res.length === 0) {
+                    wx.showToast({
+                        title: '没有数据了',
+                        icon: 'none',
+                    });
+                }
                 wx.hideLoading();
+                wx.hideNavigationBarLoading();
+                this.data.start++
 
-                res.books.map(item => {
-                    item.cover = 'https://statics.zhuishushenqi.com' + item.cover
-                })
-                console.log(res.books);
+                    res.books.map(item => {
+                        item.cover = 'https://statics.zhuishushenqi.com' + item.cover
+                    })
+                this.data.booksData = this.data.booksData.concat(res.books)
+                console.log(this.data.booksData);
                 this.setData({
-                        booksData: res.books
+                        booksData: this.data.booksData,
+                        start: this.data.start,
                     })
                     // this.store.data.classifyData = JSON.stringify(res)
             } else {
                 wx.hideLoading();
+                wx.hideNavigationBarLoading();
             }
 
         }).catch(err => {
             console.log(err);
             wx.hideLoading();
+            wx.hideNavigationBarLoading();
         })
     },
 
@@ -99,7 +131,10 @@ Page({
     },
 
     clickItem(e) {
-
+        this.setData({
+            booksData: [],
+            start: 0,
+        })
         this.setData({
             indexItem: e.currentTarget.dataset.index,
             type: e.currentTarget.dataset.ids
@@ -107,8 +142,13 @@ Page({
 
         this.getCatsBook()
 
+
     },
     clickItems(e) {
+        this.setData({
+            booksData: [],
+            start: 0,
+        })
         console.log(e);
         this.setData({
             indexItems: e.currentTarget.dataset.index,
@@ -118,11 +158,24 @@ Page({
         this.getCatsBook()
 
     },
+    getHeight() {
+        let query = wx.createSelectorQuery()
+        query.select('#index-nav').boundingClientRect((rect) => {
+            let top = rect.top
+            console.log(rect.top);
+            console.log(rect.bottom);
+            this.setData({
+                contentHeight: rect.bottom
+            })
+        }).exec()
+
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        console.log(wx.getSystemInfoSync().windowHeight);
         this.setData({
             major: options.name,
             gender: options.gender
@@ -135,6 +188,7 @@ Page({
         setTimeout(() => {
             this.getMinor()
         }, 400)
+        this.getHeight()
 
     },
 
@@ -170,7 +224,13 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
+        // 显示下拉刷新时导航条的loading
+        wx.showNavigationBarLoading();
+        this.getCatsBook()
+            // setTimeout(() => {
 
+        //     console.log('刷新');
+        // }, 2000)
     },
 
     /**

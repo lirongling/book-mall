@@ -1,0 +1,13 @@
+<!-- component/details/comments/comments.wxml -->
+<!-- <text>component/details/comments/comments.wxml{{shortReview}}</text> -->
+<view class="content">
+  <view class="item flex j-star a-center" wx:for="{{shortReview}}" wx:key="index">
+    <view class="">
+      <image class="img" src="{{item.author.avatar}}" mode="widthFix" />
+    </view>
+    <view class="item-right">
+      <view class="nickname">{{item.author.nickname}}</view>
+      <view class="contents ellipsis">{{item.content}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+@import "../../../app.wxss";
+.item {
+    margin: 30rpx auto;
+}
+
+.img {
+    width: 120rpx;
+    border-radius: 50%;
+}
+
+.item-right {
+    margin-left: 15rpx;
+}
+
+.nickname {
+    color: rgb(226, 113, 21);
+}
+
+.contents {
+    margin-top: 15rpx;
+    width: 550rpx;
+    font-size: 30rpx;
+}

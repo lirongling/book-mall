@@ -32,8 +32,11 @@
     color: rgb(116, 112, 112);
     font-size: 30rpx;
     width: 100%;
-    white-space: normal;
-    height: 120rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .tag {
