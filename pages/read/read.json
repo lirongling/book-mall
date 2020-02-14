@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "chapters": "../../component/comm/chapters/chapters"
+    }
+}

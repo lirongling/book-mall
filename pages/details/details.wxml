@@ -1,7 +1,8 @@
-<view class="container">
+<chapters wx:if="{{isChapters}}" bid="{{bid}}" bind:close="closeChapters"></chapters>
+<view class="container" wx:else>
   <view class="top"></view>
   <view class="introduce flex f-column a-center">
-    <view class="introduce-img">
+    <view class="introduce-img" bind:tap="bigImg">
       <image class="img" src="{{bookDateils.cover}}" mode="widthFix" />
     </view>
     <view class="name">{{bookDateils.title}}</view>
@@ -9,8 +10,8 @@
   </view>
   <view class="content">
     <view class="btn flex j-center">
-      <view class="btns">开始阅读</view>
-      <view class="btns add">加入书架</view>
+      <view class="btns" bind:tap="read">开始阅读</view>
+      <view class="btns add" bind:tap="addBookList">{{collectionText}}</view>
     </view>
     <view class="rate flex j-center">
       <rate rating="{{bookDateils.rating}}"></rate>
@@ -28,7 +29,7 @@
         <view class="content" wx:else>
           <comments shortReview="{{shortReview}}"></comments>
         </view>
-        <view class="chapter flex j-center a-center">
+        <view class="chapter flex j-center a-center" bind:tap="showChapters">
           <image class="chapter-img" src="../../accets/images/chapter.png" mode="widthFix" />
           总目录（{{bookDateils.chaptersCount}}章）
         </view>

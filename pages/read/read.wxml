@@ -1,0 +1,31 @@
+<chapters wx:if="{{isChapters}}" bid="{{bid}}" bind:close="closeChapters" bind:change="changes"></chapters>
+<view class="container" style="background-color:{{contenBack}}">
+  <view class="title" style="font-size:{{contentSize+2}}rpx">{{title}}</view>
+  <scroll-view enable-back-to-top="true" scroll-y="true" style="height:77.5vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="content" id="index-nav" style="font-size:{{contentSize}}rpx;line-height：{{(contentSize)*2-4}}rpx" bind:longpress="showSet" bind:tap="HiddenSet">
+      <!-- <template data="{{body}}" /> -->
+      <view>
+        <rich-text nodes="{{body}}"></rich-text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="up-down flex j-center a-center">
+    <view class="up btnsss" bind:tap="up">上一章</view>
+    <view class="down btnsss" bind:tap="down">下一章</view>
+  </view>
+  <view class="bottom" wx:if="{{showSets}}">
+    <view class="skin flex j-star a-center" wx:if="{{showColors}}">
+      换肤：
+      <view class="skin-item white" bind:tap="changeColor" data-color="#fff"></view>
+      <view class="skin-item huang" bind:tap="changeColor" data-color="#E8DFCA"></view>
+      <view class="skin-item green" bind:tap="changeColor" data-color="#E8EDE5"></view>
+      <view class="skin-item gray" bind:tap="changeColor" data-color="#A4A4A4"></view>
+    </view>
+    <view class="set flex s-between a-center">
+      <view class="chapter" bind:tap="showChapters">目录</view>
+      <view class="up-size" bind:tap="changeSize" data-num="{{-5}}">Aa-</view>
+      <view class="down-size" bind:tap="changeSize" data-num="{{5}}">Aa+</view>
+      <view class="change-skin" bind:tap="showColor">换肤</view>
+    </view>
+  </view>
+</view>

@@ -2,6 +2,7 @@
     "usingComponents": {
         "rate": "../../component/details/rate/rate",
         "tabs": "../../component/comm/tabs/tabs",
+        "chapters": "../../component/comm/chapters/chapters",
         "comments": "../../component/details/comments/comments",
         "recomment": "../../component/details/recomment/recomment"
     }

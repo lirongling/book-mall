@@ -1,7 +1,9 @@
 // pages/details/details.js
 import api from '../../http/api'
-Page({
-
+import create from '../../utils/store/create'
+import store from '../../store/index'
+create.Page(store, {
+    use: ['chapters', 'bid', 'title'],
     /**
      * 页面的初始数据
      */
@@ -18,6 +20,10 @@ Page({
         toView: 'green',
         recommend: [],
         recommends: [],
+        isChapters: false,
+        collectionText: '加入书架',
+        bookList: [],
+        flage: false,
     },
     send(e) {
         this.setData({
@@ -38,14 +44,15 @@ Page({
         });
         // console.log(api.bookInfo());
         api.bookInfo(this.data.bid).then(res => {
-            console.log(res);
             if (res.advertRead) {
                 wx.hideLoading();
                 res.cover = 'https://statics.zhuishushenqi.com' + res.cover
                 this.setData({
                     bookDateils: res
                 })
+                this.store.data.title = res.title
                 this.relatedRecommendedBooks()
+                this.isCollection()
 
                 // this.store.data.classifyData = JSON.stringify(res)
             } else {
@@ -107,7 +114,7 @@ Page({
                 })
             }
             // recommends
-            console.log(res);
+
 
         }).catch(err => {
             console.log(err);
@@ -124,13 +131,103 @@ Page({
         })
     },
     changeBook(e) {
-        console.log(e);
+
         this.setData({
             bid: e.detail,
             start: 0
         })
         this.bookInfo()
         this.shortReviews()
+
+    },
+    // 关闭目录
+    closeChapters(e) {
+        this.setData({
+            isChapters: e.detail,
+        })
+
+    },
+    // 开始阅读
+    read() {
+        wx.redirectTo({
+            url: `/pages/read/read?bid=${this.data.bid}&title=${this.data.bookDateils.title}&num=${0}`
+        })
+    },
+    // 显示目录
+    showChapters() {
+        this.setData({
+            isChapters: true,
+        })
+    },
+    // 显示大图长按后保存
+    bigImg() {
+        wx.previewImage({
+            current: this.data.bookDateils.cover,
+            urls: [ // 所有图片的URL列表，数组格式
+                this.data.bookDateils.cover
+            ],
+            success: function(res) {
+                console.log(res)
+            }
+        })
+    },
+    // 存书架
+    addBookList() {
+        let book = {
+            _id: this.data.bookDateils._id,
+            title: this.data.bookDateils.title,
+            cover: this.data.bookDateils.cover
+        }
+        if (!this.data.flage) {
+            this.data.bookList.unshift(book)
+            wx.setStorageSync('bookList', JSON.stringify(this.data.bookList));
+            this.setData({
+                bookList: this.data.bookList,
+                flage: true,
+                collectionText: '已加入书架',
+            })
+            wx.showToast({
+                title: '加入成功',
+                icon: 'success',
+
+            });
+        } else {
+            wx.showToast({
+                title: '已加入书架',
+                icon: 'none',
+
+            });
+        }
+
+        // console.log(bookList);
+
+    },
+    // 判断是否已收藏
+    isCollection() {
+        this.data.flage = false
+        this.data.collectionText = '加入书架'
+        if (wx.getStorageSync('bookList')) {
+            this.data.bookList = JSON.parse(wx.getStorageSync('bookList'));
+            // console.log(wx.getStorageInfoSync('keys').bookList);
+            this.data.flage = this.data.bookList.some(item => {
+                return item._id === this.data.bookDateils._id
+            })
+            if (this.data.flage) {
+                this.setData({
+                    collectionText: '已加入书架',
+                })
+            } else {
+                this.setData({
+                    collectionText: '加入书架',
+                })
+            }
+        } else {
+            this.setData({
+                flage: this.data.flage,
+                bookList: this.data.bookList,
+                collectionText: this.data.collectionText,
+            })
+        }
 
     },
 
@@ -144,8 +241,11 @@ Page({
         this.setData({
             bid: options.bid
         })
+        this.store.data.bid = options.bid
+
         this.bookInfo()
         this.shortReviews()
+
 
     },
 

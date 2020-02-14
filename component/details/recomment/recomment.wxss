@@ -16,5 +16,9 @@
 }
 
 .title-img {
-    width: 70rpx;
+    width: 50rpx;
+}
+
+.title-right {
+    color: #0189FF;
 }

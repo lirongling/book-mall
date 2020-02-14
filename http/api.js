@@ -1,6 +1,7 @@
 import service from './index'
-
+const API_HOST = 'https://api.zhuishushenqi.com' //接口地址
 export default {
+
     // 获取轮播图
     // getBanners() {
     //     return service.get('banner')
@@ -47,6 +48,20 @@ export default {
     // },
     relatedRecommendedBooks(book_id) {
         return service.get(`book/${book_id}/recommend`)
+    },
+    // 书籍章节 根据书id
+    // bookChaptersBookId: function (book_id) {
+    //     return `${API_HOST}/mix-atoc/${book_id}?view=chapters`
+    // },
+    bookChaptersBookId(book_id) {
+        return service.get(`mix-atoc/${book_id}?view=chapters`)
+    },
+    // 章节内容
+    // chapterContent: function(link) { // @param link 章节link
+    //     return `https://chapter2.zhuishushenqi.com/chapter/${encodeURIComponent(link)}`
+    // },
+    chapterContent(link) {
+        return service.get(`https://chapter2.zhuishushenqi.com/chapter/${encodeURIComponent(link)}`)
     }
 
 

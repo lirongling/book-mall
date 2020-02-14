@@ -5,6 +5,7 @@
         "pages/search/search",
         "pages/booksCar/booksCar",
         "pages/details/details",
+        "pages/read/read",
         "pages/help/help"
 
     ],

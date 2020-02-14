@@ -1,0 +1,33 @@
+@import "../../../app.wxss";
+.container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    padding-left: 20rpx;
+    padding-right: 100rpx;
+    z-index: 9;
+    background: white;
+}
+
+.top {
+    margin-right: 20rpx;
+    height: 10vh;
+}
+
+.top-left {
+    font-size: 34rpx;
+    font-weight: 600;
+}
+
+.top-right {
+    background: #D81E06;
+    color: white;
+    padding: 10rpx;
+    margin-right: 10rpx;
+    border-radius: 20% 0 0 20%;
+}
+
+.content-item {
+    line-height: 90rpx;
+    margin: 0 30rpx;
+}
