@@ -3,7 +3,7 @@ import api from '../../http/api'
 import create from '../../utils/store/create'
 import store from '../../store/index'
 create.Page(store, {
-    use: ['chapters', 'bid', 'title'],
+    use: ['chapters', 'bid', 'title', 'bookList'],
     /**
      * 页面的初始数据
      */
@@ -72,10 +72,12 @@ create.Page(store, {
         api.shortReviews(this.data.bid, this.data.start).then(res => {
             wx.hideLoading();
             if (res.ok) {
-                this.data.start++
-                    res.docs.map(item => {
-                        item.author.avatar = 'https://statics.zhuishushenqi.com' + item.author.avatar
-                    })
+                // console.log(this.data.start);
+                // console.log(res);
+                this.data.start += 20
+                res.docs.map(item => {
+                    item.author.avatar = 'https://statics.zhuishushenqi.com' + item.author.avatar
+                })
                 this.data.shortReview = this.data.shortReview.concat(res.docs)
                 this.setData({
                     shortReview: this.data.shortReview,
@@ -176,11 +178,14 @@ create.Page(store, {
         let book = {
             _id: this.data.bookDateils._id,
             title: this.data.bookDateils.title,
-            cover: this.data.bookDateils.cover
+            cover: this.data.bookDateils.cover,
+            start: '还未开始呢',
+            chaptersNum: 0
         }
         if (!this.data.flage) {
             this.data.bookList.unshift(book)
-            wx.setStorageSync('bookList', JSON.stringify(this.data.bookList));
+            this.store.data.bookList = this.data.bookList
+            wx.setStorageSync('bookList', this.data.bookList);
             this.setData({
                 bookList: this.data.bookList,
                 flage: true,
@@ -207,7 +212,9 @@ create.Page(store, {
         this.data.flage = false
         this.data.collectionText = '加入书架'
         if (wx.getStorageSync('bookList')) {
-            this.data.bookList = JSON.parse(wx.getStorageSync('bookList'));
+            this.data.bookList = wx.getStorageSync('bookList');
+            this.store.data.bookList = wx.getStorageSync('bookList');
+            console.log(store.data.bookList);
             // console.log(wx.getStorageInfoSync('keys').bookList);
             this.data.flage = this.data.bookList.some(item => {
                 return item._id === this.data.bookDateils._id

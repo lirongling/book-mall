@@ -1,2 +1,11 @@
-<!--component/books/ranking/ranking.wxml-->
-<text>component/books/ranking/ranking.wxml</text>
+<view class="container">
+  <view class="title">{{name}}</view>
+  <view class="flex j-star f-column">
+    <view class="item flex j-star a-center " wx:for="{{male}}" wx:key="index" data-tid="{{item._id}}" data-title="{{item.title}}" bind:tap="goCar" wx:if="{{index<7}}">
+      <view class="item-img">
+        <image class="img" src="{{item.cover}}" mode="widthFix" />
+      </view>
+      <view class="item-title">{{item.title}}</view>
+    </view>
+  </view>
+</view>

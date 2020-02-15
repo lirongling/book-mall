@@ -1,7 +1,17 @@
 <!-- index.wxml -->
 <view class="container">
   <view>
-    <indexTop></indexTop>
+    <indexTop bind:edit="edit"></indexTop>
   </view>
-  <view class="no-collection flex j-center">主人还没收藏书籍哟，请去书城收藏吧</view>
+  <view class="no-collection flex j-center" wx:if="{{bookList.length===0}}">主人还没收藏书籍哟，请去书城收藏吧</view>
+  <view class="content flex f-wrap" wx:else>
+    <view class="content-item flex f-column a-center" wx:for="{{bookList}}" wx:key="index" data-item="{{item}}" catch:tap="goRead">
+      <view class="item-img  {{isAnimation ? 'img-an' : ''}}">
+        <image animation="{{animation}}" class="img " src="{{item.cover}}" mode="widthFix" />
+      </view>
+      <view class="title ellipsis">{{item.title}}</view>
+      <view class="start ellipsis">{{item.start}}</view>
+      <image wx:if="{{isAnimation}}" data-index="{{index}}" bind:tap="del" class="del-img" src="../../accets/images/del.png" mode="widthFix" />
+    </view>
+  </view>
 </view>

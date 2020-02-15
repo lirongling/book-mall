@@ -19,7 +19,7 @@ export default {
         if (minor) {
             return service.get(`/book/by-categories?gender=${gender}&type=${type}&major=${major}&minor=${minor}&start=${start}&limit=20`)
         } else {
-            return service.get(`/book/by-categories?gender=${gender}&type=${type}&major=${major}&start=${start}&limit=20`)
+            return service.get(`/book/by-categories?gender=${gender}&type=${type}&major=${major}&start=${start}&limit=${20}`)
         }
     },
     //获取小类
@@ -40,7 +40,7 @@ export default {
     //     return `${API_HOST}/post/short-review?book=${book_id}&total=true&sortType=newest`
     // },
     shortReviews(book_id, start) {
-        return service.get(`/post/short-review?book=${book_id}&limit=20&total=true&start=${start}&sortType=hottest`)
+        return service.get(`/post/short-review?book=${book_id}&limit=${20}&total=true&start=${start}&sortType=hottest`)
     },
     // 相关推荐
     //  relatedRecommendedBooks: function (book_id) { // @param book_id 书籍id
@@ -62,6 +62,30 @@ export default {
     // },
     chapterContent(link) {
         return service.get(`https://chapter2.zhuishushenqi.com/chapter/${encodeURIComponent(link)}`)
+    },
+    // 排名分类
+    // rankCategory: `${API_HOST}/ranking/gender`,
+    rankCategory() {
+        return service.get(`ranking/gender`)
+    },
+    // 排名详情
+    //  rankInfo: function (rank_id) { //@param rank_id 分类ID
+    //    return `${API_HOST}/ranking/${rank_id}`
+    // },
+    rankInfo(rank_id) {
+        return service.get(`${API_HOST}/ranking/${rank_id}`)
+    },
+    //搜索热词
+    // hotWord: API_HOST + '/book/hot-word',
+    hotWord() {
+        return service.get('/book/hot-word')
+    },
+    // 书籍搜索 (分类，书名，作者名)
+    //  bookSearch: function (content) { //@param content 搜索内容
+    //    return `${API_HOST}/book/fuzzy-search?start=0&limit=50&v=1&query=${content}`
+    // },
+    bookSearch(content) {
+        return service.get(`book/fuzzy-search?start=0&limit=50&v=1&query=${content}`)
     }
 
 

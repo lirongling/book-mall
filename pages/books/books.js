@@ -15,7 +15,8 @@ create.Page(store, {
 
         ],
         indexItem: 0,
-        classifyData: null
+        classifyData: null,
+        rankingData: null,
     },
     // 获取大分类数据
     getCats() {
@@ -25,7 +26,6 @@ create.Page(store, {
         api.getCats().then(res => {
             if (res.ok) {
                 wx.hideLoading();
-                console.log(res);
                 this.setData({
                         classifyData: res
                     })
@@ -45,6 +45,34 @@ create.Page(store, {
         })
 
     },
+    // 获取排名分类
+    rankCategory() {
+        wx.showLoading({
+            title: '加载中',
+        });
+        api.rankCategory().then(res => {
+            if (res.ok) {
+                wx.hideLoading();
+                for (let i in res) {
+                    if (i !== 'ok') {
+                        res[i].map(item => {
+                            item.cover = 'https://statics.zhuishushenqi.com' + item.cover
+                        })
+                    }
+                }
+                this.setData({
+                    rankingData: res
+                })
+                console.log(res);
+            } else {
+                wx.hideLoading();
+            }
+
+        }).catch(err => {
+            console.log(err);
+            wx.hideLoading();
+        })
+    },
 
 
     /**
@@ -53,6 +81,7 @@ create.Page(store, {
     onLoad: function(options) {
         // console.log(api);
         this.getCats()
+        this.rankCategory()
     },
 
     /**

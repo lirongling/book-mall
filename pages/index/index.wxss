@@ -1,3 +1,71 @@
 .no-collection {
     padding-top: 100px;
 }
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 40rpx;
+}
+
+.content-item {
+    width: 33%;
+    box-sizing: border-box;
+    position: relative;
+    padding: 30rpx 0;
+}
+
+.del-img {
+    background: white;
+    position: absolute;
+    top: 40rpx;
+    right: 20rpx;
+    width: 40rpx;
+    z-index: 9;
+    border-radius: 50%;
+}
+
+.item-img {
+    height: 280rpx;
+    overflow: hidden;
+    width: 85%;
+}
+
+.img {
+    width: 100%;
+    transform-origin: center 20%;
+}
+
+.img-an {
+    animation: go 1s linear infinite;
+}
+
+@keyframes go {
+    0% {
+        transform: translate(0);
+    }
+    25% {
+        transform: rotate(-10deg)
+    }
+    70% {
+        transform: rotate(10deg)
+    }
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+.title {
+    font-size: 32rpx;
+    margin: 10rpx auto;
+}
+
+.title,
+.start {
+    width: 85%;
+}
+
+.start {
+    font-size: 30rpx;
+    color: rgb(139, 139, 139);
+}

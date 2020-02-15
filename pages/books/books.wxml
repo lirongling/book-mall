@@ -12,6 +12,9 @@
     <classify male='{{classifyData.press}}' name="励志" gender="press"></classify>
   </view>
   <view class="content " wx:if="{{indexItem===1}}">
-    <ranking></ranking>
+    <ranking male='{{rankingData.male}}' name="男生" gender="male"></ranking>
+    <ranking male='{{rankingData.female}}' name="女生" gender="female"></ranking>
+    <ranking male='{{rankingData.picture}}' name="出版" gender="picture"></ranking>
+    <ranking male='{{rankingData.epub}}' name="励志" gender="press"></ranking>
   </view>
 </view>

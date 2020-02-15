@@ -19,8 +19,8 @@
 .btn {}
 
 .up-down {
-    height: 10vh;
-    padding-bottom: 30rpx;
+    height: 12vh;
+    /* padding-bottom: 30rpx; */
 }
 
 .up,

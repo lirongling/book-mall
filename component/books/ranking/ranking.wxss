@@ -1,1 +1,21 @@
-/* component/books/ranking/ranking.wxss */
+@import "../../../app.wxss";
+.container {
+    margin-bottom: 20rpx;
+    width: 100%;
+}
+
+.title {
+    margin-left: 20rpx;
+    color: rgb(151, 144, 144);
+    line-height: 80rpx;
+}
+
+.item {
+    border-bottom: 1rpx rgb(226, 223, 223) solid;
+    margin: 20rpx 30rpx;
+}
+
+.img {
+    width: 70rpx;
+    margin-right: 20rpx;
+}

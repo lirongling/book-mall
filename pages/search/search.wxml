@@ -1,2 +1,16 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="top flex j-center a-center">
+  <input class="input" value="{{inputValue}}" bindinput="bindinput" placeholder-class="placeholder-class" type="text" placeholder="请输入分类，书名或者作者名" confirm-type="search" />
+  <view wx:if="{{inputValue.length>0}}">
+    <image catchtap="delValues" class="top-img" src="../../accets/images/del.png" mode="widthFix" />
+  </view>
+</view>
+<view wx:if="{{booksData.length===0}}" class="advice">
+  <!-- <advice name="大家都在搜" hotWords="{{hotWords}}"></advice> -->
+  <advice name="最近热搜" hotWords="{{newHotWords}}" type="{{1}}"></advice>
+  <advice name="搜索历史" hotWords="{{history}}" type="{{2}}" bind:search="search"></advice>
+</view>
+<view class="content" id="index-nav">
+  <view class="content-item" wx:for="{{booksData}}" wx:key="index">
+    <booksDetails details="{{item}}" wx:if="{{index<bookIdx}}" bind:add="addHistory"></booksDetails>
+  </view>
+</view>

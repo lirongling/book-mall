@@ -1,7 +1,7 @@
 <chapters wx:if="{{isChapters}}" bid="{{bid}}" bind:close="closeChapters" bind:change="changes"></chapters>
 <view class="container" style="background-color:{{contenBack}}">
   <view class="title" style="font-size:{{contentSize+2}}rpx">{{title}}</view>
-  <scroll-view enable-back-to-top="true" scroll-y="true" style="height:77.5vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view enable-back-to-top="true" scroll-y="true" style="height:{{contentHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="content" id="index-nav" style="font-size:{{contentSize}}rpx;line-height：{{(contentSize)*2-4}}rpx" bind:longpress="showSet" bind:tap="HiddenSet">
       <!-- <template data="{{body}}" /> -->
       <view>

@@ -1,23 +1,51 @@
-// component/books/ranking/ranking.js
+//Component Object
 Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
+    properties: {
+        myProperty: {
+            type: String,
+            value: '',
+            observer: function() {}
+        },
+        male: {
+            type: Object,
+            value: {}
+        },
+        name: {
+            type: String,
+            value: ''
+        },
+        gender: {
+            type: String,
+            value: ''
+        }
 
-  },
+    },
+    data: {
 
-  /**
-   * 组件的初始数据
-   */
-  data: {
+    },
+    methods: {
+        goCar(e) {
+            console.log('object');
+            let tid = e.currentTarget.dataset.tid
+            let title = e.currentTarget.dataset.title
+            wx.navigateTo({
+                url: `/pages/booksCars/booksCars?name=${this.properties.name}&tid=${tid}&title=${title}`,
+            });
+        }
+    },
+    created: function() {
 
-  },
+    },
+    attached: function() {
 
-  /**
-   * 组件的方法列表
-   */
-  methods: {
+    },
+    ready: function() {
 
-  }
-})
+    },
+    moved: function() {
+
+    },
+    detached: function() {
+
+    },
+});

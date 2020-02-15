@@ -1,5 +1,5 @@
 <view class="top flex s-between">
-  <view class="top-left">
+  <view class="top-left" bind:tap="edit">
     <image src="../../accets/images/edit.png" class="left-img" mode="widthFix" />
   </view>
   <view class="top-right flex s-between">

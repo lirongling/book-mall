@@ -1,0 +1,23 @@
+<wxs module="filter" src="../../booksCar/booksDetails/color.wxs"></wxs>
+<view class="container" wx:if="{{advices.length>0}}">
+  <view class="top flex s-between a-center">
+    <view class="title">{{name}}</view>
+    <view class="top-right flex a-center" bind:tap="changeAdvice" wx:if="{{type!==2}}">
+      <image class="top-img" src="../../../accets/images/refresh.png" mode="widthFix" />
+      换一换
+    </view>
+    <view wx:else class="top-right flex a-center" bind:tap="delHistory">
+      <image class="top-img" src="../../../accets/images/del.png" mode="widthFix" />
+    </view>
+  </view>
+  <view class="content flex j-star f-wrap" wx:if="{{type!==1}}">
+    <view class="content-item" style="background-color:{{filter.color()}}" wx:for="{{advices}}" wx:key="index" data-item="{{item}}" wx:if="{{index<6}}" bind:tap="goTo">
+      {{item}}
+    </view>
+  </view>
+  <view class="content flex j-star f-wrap" wx:else>
+    <view class="content-item" style="background-color:{{filter.color()}}" wx:for="{{advices}}" wx:key="index" data-item="{{item}}" wx:if="{{index<6}}" bind:tap="goTo">
+      {{item.word}}
+    </view>
+  </view>
+</view>

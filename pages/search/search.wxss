@@ -1,1 +1,38 @@
-/* pages/search/search.wxss */
+.top {
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    background: white;
+}
+
+.input {
+    width: 90%;
+    height: 70rpx;
+    background: #EFEFEF;
+    border-radius: 80rpx;
+    margin: 20rpx 0;
+    text-align: center;
+}
+
+.placeholder-class {
+    width: 100%;
+}
+
+.top-img {
+    width: 40rpx;
+    position: absolute;
+    right: 37px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+}
+
+.advice,
+.content {
+    margin-top: 100rpx;
+}
+
+.advice {
+    margin-top: 120rpx;
+}

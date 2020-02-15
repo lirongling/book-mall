@@ -1,5 +1,5 @@
 <wxs module="filter" src="./color.wxs"></wxs>
-<view class="containor flex j-star" bind:tap="goTo" data-bid="{{details._id}}">
+<view class="containor flex j-star" bind:tap="goTo" data-title="{{details.title}}" data-bid="{{details._id}}">
   <view class="details-left">
     <image class="img" src="{{details.cover}}" mode="widthFix" />
   </view>

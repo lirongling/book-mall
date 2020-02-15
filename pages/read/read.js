@@ -3,7 +3,7 @@ import api from '../../http/api'
 import create from '../../utils/store/create'
 import store from '../../store/index'
 create.Page(store, {
-
+    use: ['bookList', 'bid'],
     /**
      * 页面的初始数据
      */
@@ -17,13 +17,18 @@ create.Page(store, {
         contenBack: '',
         showColors: false,
         showSets: false,
-        contentHeight: 0
+        contentHeight: 0,
+        flage: false,
+        bookList: [],
+        bookIdx: 0
 
     },
     // 关闭目录
     closeChapters(e) {
         this.setData({
             isChapters: e.detail,
+            showSets: false
+
         })
 
 
@@ -168,17 +173,34 @@ create.Page(store, {
                 // // console.log(wx.getSystemInfoSync().windowHeight);
                 // console.log(rect.top);
             console.log(rect.bottom);
-            let a = rect.bottom * 2
+            let a = wx.getSystemInfoSync().windowHeight * 0.78
             this.setData({
                 contentHeight: a
             })
         }).exec()
 
     },
+    // 判断是否已收藏
+    isCollection() {
+        this.data.flage = false
+        if (wx.getStorageSync('bookList')) {
+            this.data.bookList = wx.getStorageSync('bookList');
+            this.data.flage = this.data.bookList.some(item => {
+                return item._id === this.store.data.bid
+            })
+            this.setData({
+                flage: this.data.flage,
+                bookList: this.data.bookList
+            })
+        }
+
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
+        this.store.data.bid = options.bid
         console.log(options.num);
         this.setData({
             num: options.num
@@ -187,11 +209,13 @@ create.Page(store, {
             title: options.title,
         });
 
-        // this.store.data.bid = options.bid
+
         this.bookChapters()
-        setTimeout(() => {
-            this.getHeight()
-        }, 400)
+
+        this.getHeight()
+        this.isCollection()
+
+
 
     },
 
@@ -220,7 +244,17 @@ create.Page(store, {
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
+        if (this.data.flage) {
+            this.data.bookList.map(item => {
+                if (item._id === this.store.data.bid) {
+                    item.chaptersNum = this.data.num
+                    item.start = this.store.data.chapters[this.data.num].title
+                    wx.setStorageSync('bookList', this.data.bookList);
+                    return
+                }
+            })
 
+        }
     },
 
     /**

@@ -1,23 +1,16 @@
-// component/index/indexTop.js
+//Component Object
 Component({
-    /**
-     * 组件的属性列表
-     */
     properties: {
+        myProperty: {
+            type: String,
+            value: '',
+            observer: function() {}
+        },
 
     },
-
-    /**
-     * 组件的初始数据
-     */
     data: {
 
     },
-
-
-    /**
-     * 组件的方法列表
-     */
     methods: {
         help() {
             wx.navigateTo({
@@ -25,5 +18,23 @@ Component({
 
             });
         },
-    }
-})
+        edit() {
+            this.triggerEvent('edit', 'item')
+        }
+    },
+    created: function() {
+
+    },
+    attached: function() {
+
+    },
+    ready: function() {
+
+    },
+    moved: function() {
+
+    },
+    detached: function() {
+
+    },
+});
