@@ -14,7 +14,7 @@
     </view>
   </view>
   <view class="content" id="index-nav">
-    <scroll-view enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight*2-116}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <scroll-view enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight*2}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view class="content-item" wx:for="{{booksData}}" wx:key="index">
         <booksDetails details="{{item}}"></booksDetails>
       </view>

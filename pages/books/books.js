@@ -63,7 +63,7 @@ create.Page(store, {
                 this.setData({
                     rankingData: res
                 })
-                console.log(res);
+
             } else {
                 wx.hideLoading();
             }

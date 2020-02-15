@@ -1,1 +1,21 @@
-/* pages/help/help.wxss */
+.container {
+    padding: 20rpx;
+    line-height: 60rpx;
+}
+
+.questions-statements {
+    font-size: 36rpx;
+    font-weight: 600;
+    margin: 20rpx 0;
+}
+
+.q-box {
+    line-height: 70rpx;
+    margin: 20rpx 0;
+    font-size: 34rpx;
+    border-bottom: 1rpx rgb(226, 223, 223) solid;
+}
+
+.a-box {
+    text-indent: 2em;
+}

@@ -1,8 +1,10 @@
-<view class="box flex s-around">
-  <view class="item" hover-class="item-hover" bindtap="clickItem" data-index="{{index}}" wx:for="{{arr}}" wx:key="index">
-    <view class="title">
-      {{item.name}}
-      <view class="line" wx:if="{{indexItem===index}}"></view>
+<view>
+  <view class="box flex s-around">
+    <view class="item {{indexItem===index? 'items' : ''}}" hover-class="item-hover" bindtap="clickItem" data-index="{{index}}" wx:for="{{arr}}" wx:key="index">
+      <view class="title">
+        {{item.name}}
+        <view class="line" wx:if="{{indexItem===index}}"></view>
+      </view>
     </view>
   </view>
   <view class="content " wx:if="{{indexItem===0}}">

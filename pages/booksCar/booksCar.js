@@ -161,9 +161,11 @@ Page({
     getHeight() {
         let query = wx.createSelectorQuery()
         query.select('#index-nav').boundingClientRect((rect) => {
-            let top = rect.top
-            console.log(rect.top);
-            console.log(rect.bottom);
+            // let top = rect.top
+            // console.log(rect.top);
+            // console.log(rect.bottom);
+            // let a = wx.getSystemInfoSync().windowHeight - rect.top
+
             this.setData({
                 contentHeight: rect.bottom
             })
@@ -185,10 +187,11 @@ Page({
 
         });
         this.getCatsBook()
-        setTimeout(() => {
-            this.getMinor()
-        }, 400)
+
+        this.getMinor()
         this.getHeight()
+
+
 
     },
 

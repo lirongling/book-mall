@@ -34,7 +34,7 @@ create.Page(store, {
         });
     },
     goRead(e) {
-        console.log(e);
+
         if (!this.data.isAnimation) {
             wx.redirectTo({
                 url: `/pages/read/read?bid=${e.currentTarget.dataset.item._id}&title=${e.currentTarget.dataset.item.title}&num=${e.currentTarget.dataset.item.chaptersNum}`
@@ -48,7 +48,7 @@ create.Page(store, {
             this.setData({
                 bookList: this.data.bookList
             })
-            console.log(this.data.bookList);
+
         }
     },
     edit(e) {
