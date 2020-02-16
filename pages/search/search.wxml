@@ -4,10 +4,10 @@
     <image catchtap="delValues" class="top-img" src="../../accets/images/del.png" mode="widthFix" />
   </view>
 </view>
-<view wx:if="{{booksData.length===0}}" class="advice">
+<view wx:if="{{inputValue.length===0}}" class="advice">
   <!-- <advice name="大家都在搜" hotWords="{{hotWords}}"></advice> -->
   <advice name="最近热搜" hotWords="{{newHotWords}}" type="{{1}}"></advice>
-  <advice name="搜索历史" hotWords="{{history}}" type="{{2}}" bind:search="search"></advice>
+  <advice wx:if="{{history.length>0}}" name="搜索历史" hotWords="{{history}}" type="{{2}}" bind:search="search"></advice>
 </view>
 <view class="content" id="index-nav">
   <view class="content-item" wx:for="{{booksData}}" wx:key="index">

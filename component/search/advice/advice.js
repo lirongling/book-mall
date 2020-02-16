@@ -19,7 +19,8 @@ create.Component(store, {
 
     },
     data: {
-        advices: []
+        advices: [],
+
     },
     methods: {
         // getHistory() {
@@ -30,9 +31,11 @@ create.Component(store, {
         //     }
         // },
         changeAdvice() {
+            console.log('object');
             let a = this.data.advices.slice(6)
             let b = this.data.advices.slice(0, 6)
             let c = a.concat(b)
+
             this.setData({
                 advices: c
             })
@@ -82,7 +85,10 @@ create.Component(store, {
             this.setData({
                 advices: this.properties.hotWords
             })
-        }, 400)
+
+        }, 500)
+
+
     },
     moved: function() {
 

@@ -1,7 +1,7 @@
 import create from '../../../utils/store/create'
 import store from '../../../store/index'
 create.Component(store, {
-    use: ['search'],
+    use: ['search', 'searchText1'],
     properties: {
         details: {
             type: Object,
@@ -16,17 +16,19 @@ create.Component(store, {
     methods: {
         // 保存搜索历史
         saveHistory(title) {
+            console.log(store.data.searchText1);
             let history = []
             let flage = false
             if (wx.getStorageSync('history')) {
                 history = wx.getStorageSync('history');
                 flage = history.some((item) => {
-                    return item === title
+                    return item === store.data.searchText1
                 })
             }
             if (!flage) {
-                this.triggerEvent('add', title)
-                history.unshift(title)
+                this.triggerEvent('add', store.data.searchText1)
+                history.unshift(store.data.searchText1)
+                history = history.slice(0, 12)
                 wx.setStorageSync('history', history);
             }
         },

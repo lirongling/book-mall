@@ -6,5 +6,6 @@ export default {
         bid: null,
         history: [],
         searchText: '',
+        searchText1: ''
     },
 }

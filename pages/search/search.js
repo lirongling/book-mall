@@ -3,7 +3,7 @@ import create from '../../utils/store/create'
 import store from '../../store/index'
 
 create.Page(store, {
-    use: ['search'],
+    use: ['search', 'searchText1', 'searchText'],
     /**
      * 页面的初始数据
      */
@@ -19,6 +19,7 @@ create.Page(store, {
         this.setData({
             inputValue: e.detail.value
         })
+        this.store.data.searchText1 = e.detail.value
 
         if (e.detail.value.trim() !== '') {
             this.bookSearch()
@@ -80,7 +81,7 @@ create.Page(store, {
             title: '加载中',
         });
         api.hotWord().then(res => {
-
+            console.log(res);
             if (res.ok) {
                 wx.hideLoading();
                 this.setData({
@@ -140,6 +141,7 @@ create.Page(store, {
             this.setData({
                 inputValue: store.data.searchText
             })
+            this.store.data.searchText1 = store.data.searchText
             this.bookSearch()
         }
     },

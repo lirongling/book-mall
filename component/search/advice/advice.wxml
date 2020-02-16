@@ -11,7 +11,7 @@
     </view>
   </view>
   <view class="content flex j-star f-wrap" wx:if="{{type!==1}}">
-    <view class="content-item" style="background-color:{{filter.color()}}" wx:for="{{advices}}" wx:key="index" data-item="{{item}}" wx:if="{{index<6}}" bind:tap="goTo">
+    <view class="content-item" style="background-color:{{filter.color()}}" wx:for="{{advices}}" wx:key="index" data-item="{{item}}" bind:tap="goTo">
       {{item}}
     </view>
   </view>
