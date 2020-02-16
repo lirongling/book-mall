@@ -14,11 +14,11 @@
 .content {
     padding: 0 40rpx;
     text-indent: 2em;
-    min-height: 75vh;
+    min-height: 77vh;
 }
 
 .text {
-    min-height: 75vh;
+    min-height: 77vh;
 }
 
 .btn {}

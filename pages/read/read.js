@@ -120,23 +120,24 @@ create.Page(store, {
     },
     // 改变字体
     changeSize(e) {
-        this.data.contentSize += e.currentTarget.dataset.num
-        if (this.data.contentSize < 15) {
+        let a = this.data.contentSize
+        a += e.currentTarget.dataset.num
+        if (a < 15) {
             wx.showToast({
                 title: '不能减小了，会影响视力哟',
                 icon: 'none',
             });
             return
-        } else if (this.data.contentSize > 65) {
+        } else if (a > 65) {
             wx.showToast({
                 title: '不能再增大了，会影响阅读体验哟',
                 icon: 'none',
             });
             return
         } else {
-            this.data.contentSize += e.currentTarget.dataset.num
+            // this.data.contentSize += e.currentTarget.dataset.num
             this.setData({
-                contentSize: this.data.contentSize
+                contentSize: a
             })
         }
 

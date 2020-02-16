@@ -3,6 +3,7 @@ import create from '../../utils/store/create'
 import store from '../../store/index'
 
 create.Page(store, {
+    use: ['search'],
     /**
      * 页面的初始数据
      */
@@ -51,6 +52,7 @@ create.Page(store, {
                 this.setData({
                     booksData: res.books,
                 })
+                this.store.data.searchText = ''
 
             } else {
                 wx.hideLoading();
@@ -114,6 +116,7 @@ create.Page(store, {
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
         this.hotWord()
         wx.setNavigationBarTitle({
             title: '搜索',
@@ -133,7 +136,12 @@ create.Page(store, {
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        if (store.data.searchText.length > 0) {
+            this.setData({
+                inputValue: store.data.searchText
+            })
+            this.bookSearch()
+        }
     },
 
     /**

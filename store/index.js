@@ -5,8 +5,6 @@ export default {
         chapters: [],
         bid: null,
         history: [],
-
-
-
+        searchText: '',
     },
 }

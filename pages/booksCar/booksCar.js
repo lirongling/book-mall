@@ -54,16 +54,9 @@ Page({
             scrollTop: 0
         })
     },
-    upper(e) {
-        // console.log('1111')
-        // this.setData({
-        //     hideHeader: false,
-        //     start: 0
-        // })
-        // this.getCatsBook()
+    // upper(e) {
 
-        // console.log(e);
-    },
+    // },
 
     lower(e) {
         this.getCatsBook()
@@ -84,7 +77,6 @@ Page({
                 wx.hideLoading();
                 wx.hideNavigationBarLoading();
                 this.data.start++
-
                     res.books.map(item => {
                         item.cover = 'https://statics.zhuishushenqi.com' + item.cover
                     })
@@ -159,12 +151,12 @@ Page({
             booksData: [],
             start: 0,
         })
-        console.log(e);
+
         this.setData({
             indexItems: e.currentTarget.dataset.index,
             minor: e.currentTarget.dataset.ids === '全部' ? null : e.currentTarget.dataset.ids
         })
-        console.log(this.data.minor);
+
         this.getCatsBook()
 
     },
@@ -194,11 +186,11 @@ Page({
             major: options.name,
             gender: options.gender
         })
+        this.getCatsBook()
         wx.setNavigationBarTitle({
             title: options.name
 
         });
-        this.getCatsBook()
 
         this.getMinor()
 

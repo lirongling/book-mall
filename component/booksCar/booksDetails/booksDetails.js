@@ -1,5 +1,7 @@
-//Component Object
-Component({
+import create from '../../../utils/store/create'
+import store from '../../../store/index'
+create.Component(store, {
+    use: ['search'],
     properties: {
         details: {
             type: Object,
@@ -35,6 +37,20 @@ Component({
             let rgb3 = parseInt(Math.random() * 255);
             let rag = `rgb(${rgb1},${rgb2},${rgb3})`;
             return rag
+
+        },
+        goTos(e) {
+            let item = e.currentTarget.dataset.item
+            console.log(this.store.data.searchText);
+            this.store.data.searchText = item
+            wx.switchTab({
+                url: `/pages/search/search`,
+                success: (result) => {
+
+                },
+                fail: () => {},
+                complete: () => {}
+            });
 
         },
         goTo(e) {

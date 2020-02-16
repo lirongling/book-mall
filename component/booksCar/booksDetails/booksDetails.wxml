@@ -8,9 +8,11 @@
     <view class="author">{{details.author}}</view>
     <view class="shortIntro ">{{details.shortIntro}}</view>
     <view class="tag flex j-star">
-      <view class="tag-item" style="background-color:{{filter.color()}}" wx:for="{{details.tags}}" wx:key="index" wx:if="{{index<3}}">
-        <text>{{item}}</text>
-      </view>
+      <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+        <view class="tag-item" style="background-color:{{filter.color()}}" wx:for="{{details.tags}}" wx:key="index" wx:if="{{index<3}}" data-item="{{item}}" catch:tap="goTos">
+          <text>{{item}}</text>
+        </view>
+      </scroll-view>
     </view>
   </view>
 </view>

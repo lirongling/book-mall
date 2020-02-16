@@ -14,7 +14,7 @@
     </view>
   </view>
   <view class="content" id="index-nav">
-    <scroll-view refresher-triggered="true" refresher-enabled="true" enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight}}px;" scroll-with-animation="true" upper-threshold="{{300}}" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-top="{{scrollTop}}">
+    <scroll-view refresher-triggered="true" refresher-enabled="true" enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight}}px;" scroll-with-animation="true"  bindscrolltolower="lower"  scroll-top="{{scrollTop}}">
       <view class="content-item" wx:for="{{booksData}}" wx:key="index">
         <booksDetails details="{{item}}"></booksDetails>
       </view>
