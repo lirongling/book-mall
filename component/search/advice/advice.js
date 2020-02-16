@@ -64,6 +64,11 @@ create.Component(store, {
                 success: (result) => {
                     if (result.confirm) {
                         wx.removeStorageSync('history');
+                        this.setData({
+                            advices: ''
+                        })
+                        this.triggerEvent('del', '')
+
                     }
                 },
                 fail: () => {},

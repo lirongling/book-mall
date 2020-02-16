@@ -19,17 +19,19 @@ create.Component(store, {
             console.log(store.data.searchText1);
             let history = []
             let flage = false
-            if (wx.getStorageSync('history')) {
-                history = wx.getStorageSync('history');
-                flage = history.some((item) => {
-                    return item === store.data.searchText1
-                })
-            }
-            if (!flage) {
-                this.triggerEvent('add', store.data.searchText1)
-                history.unshift(store.data.searchText1)
-                history = history.slice(0, 12)
-                wx.setStorageSync('history', history);
+            if (store.data.searchText1.trim().length > 0) {
+                if (wx.getStorageSync('history')) {
+                    history = wx.getStorageSync('history');
+                    flage = history.some((item) => {
+                        return item === store.data.searchText1
+                    })
+                }
+                if (!flage) {
+                    this.triggerEvent('add', store.data.searchText1)
+                    history.unshift(store.data.searchText1)
+                    history = history.slice(0, 12)
+                    wx.setStorageSync('history', history);
+                }
             }
         },
         changes() {

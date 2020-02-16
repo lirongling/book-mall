@@ -15,6 +15,11 @@ create.Page(store, {
         booksData: [],
         bookIdx: 20,
     },
+    delHistory() {
+        this.setData({
+            history: []
+        })
+    },
     bindinput: function(e) {
         this.setData({
             inputValue: e.detail.value
@@ -46,13 +51,27 @@ create.Page(store, {
 
             if (res.ok) {
                 wx.hideLoading();
+                if (res.books.length === 0) {
+                    wx.showToast({
+                        title: '暂无此数据',
+                        icon: 'none',
+
+                    });
+                } else {
+                    wx.showToast({
+                        title: `共${res.books.length}条数据`,
+                        icon: 'success',
+
+                    });
+                    res.books.map(item => {
+                        item.cover = 'https://statics.zhuishushenqi.com' + item.cover
+                    })
+                    this.setData({
+                        booksData: res.books,
+                    })
+                }
                 // util.keyWord(res.books, this.data.inputValue)
-                res.books.map(item => {
-                    item.cover = 'https://statics.zhuishushenqi.com' + item.cover
-                })
-                this.setData({
-                    booksData: res.books,
-                })
+
                 this.store.data.searchText = ''
 
             } else {
