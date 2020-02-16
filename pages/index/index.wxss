@@ -2,10 +2,20 @@
     padding-top: 100px;
 }
 
+.top {
+    position: fixed;
+    top: 0;
+    height: 100rpx;
+    background: white;
+    z-index: 9;
+    width: 100%;
+}
+
 .content {
+    margin-top: 150rpx;
     width: 90%;
     margin: 0 auto;
-    padding-top: 40rpx;
+    padding-top: 100rpx;
 }
 
 .content-item {

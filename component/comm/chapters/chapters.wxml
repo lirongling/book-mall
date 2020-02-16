@@ -6,7 +6,7 @@
     <view class="top-right" bind:tap="closeChapters">收起</view>
   </view>
   <view class="content">
-    <scroll-view enable-back-to-top="true" scroll-y="true" style="height: 90vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <scroll-view enable-back-to-top="true" scroll-y="true" style="height: 90vh;" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view class="content-item border-bottom" wx:for="{{$.chapters}}" wx:key="index" data-link="{{item.link}}" data-index="{{index}}" bind:tap="jumpChapters">
         {{item.title}}
       </view>

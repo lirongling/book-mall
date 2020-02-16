@@ -9,7 +9,7 @@ create.Page(store, {
     },
     // 删除书架
     del(e) {
-        console.log(e);
+
         wx.showModal({
             title: '是否确认删除？',
             content: '',
@@ -21,12 +21,17 @@ create.Page(store, {
             success: (result) => {
                 if (result.confirm) {
                     let a = e.currentTarget.dataset.index
-                    console.log(this.data.bookList);
                     this.data.bookList.splice(a, 1)
                     this.setData({
                         bookList: this.data.bookList
                     })
+                    wx.showToast({
+                        title: '删除成功',
+                        icon: 'success',
+
+                    });
                     wx.setStorageSync('bookList', this.data.bookList);
+
                 }
             },
             fail: () => {},

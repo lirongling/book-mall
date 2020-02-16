@@ -12,8 +12,12 @@
 }
 
 .content {
-    padding: 40rpx;
+    padding: 0 40rpx;
     text-indent: 2em;
+    min-height: 75vh;
+}
+
+.text {
     min-height: 75vh;
 }
 

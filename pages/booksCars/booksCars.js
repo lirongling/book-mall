@@ -8,24 +8,78 @@ Page({
         tid: null,
         booksData: [],
         bookIdx: 20,
+        total: [],
+        arr: [
+            { name: '周榜' },
+            { name: '月榜' },
+            { name: '总榜' }
+        ],
+        bookNum: 0
     },
     lower(e) {
 
 
+    },
+    send(e) {
+        if (e.detail !== this.data.bookNum) {
+            if (e.detail === 0) {
+                this.data.booksData = this.data.total.filter(item => {
+                    return !item.allowMonthly
+                })
+            } else if (e.detail === 1) {
+                this.data.booksData = this.data.total.filter(item => {
+                    return item.allowMonthly
+                })
+            } else {
+                this.data.booksData = this.data.total
+            }
+            if (this.data.booksData.length === 0) {
+                wx.showToast({
+                    title: '暂无此数据',
+                    icon: 'none',
+
+                });
+            }
+            this.setData({
+                bookNum: e.detail,
+                bookIdx: 20,
+                booksData: this.data.booksData,
+            })
+        }
+
+
+    },
+    onPageScroll(e) {
+        // console.log(e);
     },
     rankInfo() {
         wx.showLoading({
             title: '加载中',
         });
         api.rankInfo(this.data.tid).then(res => {
-            console.log(res);
+            wx.hideLoading();
             if (res.ok) {
-                wx.hideLoading();
                 res.ranking.books.map(item => {
-                    item.cover = 'https://statics.zhuishushenqi.com' + item.cover
+                        item.cover = 'https://statics.zhuishushenqi.com' + item.cover
+                    })
+                    // this.data.mouth = res.ranking.books.filter(item => {
+                    //     return item.allowMonthly
+                    // })
+                this.data.booksData = res.ranking.books.filter(item => {
+                    return !item.allowMonthly
                 })
+                if (this.data.booksData.length === 0) {
+                    wx.showToast({
+                        title: '暂无此数据',
+                        icon: 'none',
+
+                    });
+                }
                 this.setData({
-                    booksData: res.ranking.books
+                    booksData: this.data.booksData,
+                    total: res.ranking.books,
+
+
                 })
 
             } else {

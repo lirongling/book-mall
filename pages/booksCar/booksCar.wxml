@@ -5,7 +5,7 @@
         {{item.name}}
       </view>
     </view>
-    <view class="big-classify ">
+    <view class="big-classify " wx:if="{{smallClassify.length>1}}">
       <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
         <view class="big-item big-items {{indexItems===index ? 'active' : ''}}" wx:for="{{smallClassify}}" data-ids="{{item}}" bindtap="clickItems" data-index="{{index}}" wx:key="index">
           {{item}}
@@ -14,7 +14,7 @@
     </view>
   </view>
   <view class="content" id="index-nav">
-    <scroll-view enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight*2}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <scroll-view refresher-triggered="true" refresher-enabled="true" enable-back-to-top="true" scroll-y="true" style="height: {{contentHeight}}px;" scroll-with-animation="true" upper-threshold="{{300}}" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-top="{{scrollTop}}">
       <view class="content-item" wx:for="{{booksData}}" wx:key="index">
         <booksDetails details="{{item}}"></booksDetails>
       </view>

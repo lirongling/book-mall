@@ -1,4 +1,4 @@
-<view class="box flex s-around" style="background-color:{{color}}">
+<view class="box flex s-around" style="background-color:{{color}}" id="box-tabs">
   <view class="item" hover-class="item-hover" bindtap="clickItem" data-index="{{index}}" wx:for="{{arr}}" wx:key="index">
     <view class="title">
       {{item.name}}

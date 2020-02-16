@@ -98,7 +98,7 @@ create.Page(store, {
     },
     // 下一章
     down() {
-        if (this.data.num >= this.store.data.chapters.length) {
+        if (this.data.num >= this.store.data.chapters.length - 1) {
             wx.showToast({
                 title: '已经是最新一章了',
                 icon: 'none',
@@ -172,7 +172,7 @@ create.Page(store, {
                 // console.log(rect);
                 // // console.log(wx.getSystemInfoSync().windowHeight);
                 // console.log(rect.top);
-            console.log(rect.bottom);
+                // console.log(rect.bottom);
             let a = wx.getSystemInfoSync().windowHeight * 0.78
             this.setData({
                 contentHeight: a
@@ -201,7 +201,7 @@ create.Page(store, {
     onLoad: function(options) {
 
         this.store.data.bid = options.bid
-        console.log(options.num);
+
         this.setData({
             num: options.num
         })
@@ -245,6 +245,7 @@ create.Page(store, {
      */
     onUnload: function() {
         if (this.data.flage) {
+
             this.data.bookList.map(item => {
                 if (item._id === this.store.data.bid) {
                     item.chaptersNum = this.data.num

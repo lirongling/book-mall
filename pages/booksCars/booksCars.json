@@ -1,5 +1,6 @@
 {
     "usingComponents": {
+        "tabs": "../../component/comm/tabs/tabs",
         "booksDetails": "../../component/booksCar/booksDetails/booksDetails"
     }
 }

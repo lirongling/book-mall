@@ -43,7 +43,8 @@ Page({
         type: 'hot',
         start: 0,
         toView: 'green',
-        contentHeight: 0
+        contentHeight: 0,
+        hideHeader: true
 
 
 
@@ -54,8 +55,16 @@ Page({
         })
     },
     upper(e) {
-        console.log(e);
+        // console.log('1111')
+        // this.setData({
+        //     hideHeader: false,
+        //     start: 0
+        // })
+        // this.getCatsBook()
+
+        // console.log(e);
     },
+
     lower(e) {
         this.getCatsBook()
     },
@@ -64,7 +73,7 @@ Page({
             title: '加载中',
         });
         api.getCatsBooks(this.data.gender, this.data.type, this.data.major, this.data.start, this.data.minor).then(res => {
-            console.log(res);
+
             if (res.ok) {
                 if (res.length === 0) {
                     wx.showToast({
@@ -80,10 +89,10 @@ Page({
                         item.cover = 'https://statics.zhuishushenqi.com' + item.cover
                     })
                 this.data.booksData = this.data.booksData.concat(res.books)
-                console.log(this.data.booksData);
                 this.setData({
                         booksData: this.data.booksData,
                         start: this.data.start,
+
                     })
                     // this.store.data.classifyData = JSON.stringify(res)
             } else {
@@ -119,6 +128,7 @@ Page({
 
                     }
                 }
+                this.getHeight()
 
             } else {
                 wx.hideLoading();
@@ -164,10 +174,12 @@ Page({
             // let top = rect.top
             // console.log(rect.top);
             // console.log(rect.bottom);
-            // let a = wx.getSystemInfoSync().windowHeight - rect.top
-
+            let a = wx.getSystemInfoSync().windowHeight - rect.top
+                // if (this.data.smallClassify.length === 1) {
+                //     rect.bottom = rect.bottom + 40
+                // }
             this.setData({
-                contentHeight: rect.bottom
+                contentHeight: a
             })
         }).exec()
 
@@ -177,7 +189,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        console.log(wx.getSystemInfoSync().windowHeight);
+
         this.setData({
             major: options.name,
             gender: options.gender
@@ -189,7 +201,8 @@ Page({
         this.getCatsBook()
 
         this.getMinor()
-        this.getHeight()
+
+
 
 
 

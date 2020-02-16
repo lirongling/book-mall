@@ -18,7 +18,7 @@ create.Page(store, {
         this.setData({
             inputValue: e.detail.value
         })
-        console.log(this.data.inputValue);
+
         if (e.detail.value.trim() !== '') {
             this.bookSearch()
         } else {
@@ -41,7 +41,7 @@ create.Page(store, {
             title: '加载中',
         });
         api.bookSearch(this.data.inputValue).then(res => {
-            console.log(res);
+
             if (res.ok) {
                 wx.hideLoading();
                 // util.keyWord(res.books, this.data.inputValue)
@@ -78,7 +78,7 @@ create.Page(store, {
             title: '加载中',
         });
         api.hotWord().then(res => {
-            console.log(res);
+
             if (res.ok) {
                 wx.hideLoading();
                 this.setData({
@@ -114,11 +114,11 @@ create.Page(store, {
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        this.hotWord()
         wx.setNavigationBarTitle({
             title: '搜索',
         });
-        this.hotWord()
+
         this.getHistory()
     },
 

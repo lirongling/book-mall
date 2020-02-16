@@ -24,10 +24,14 @@ create.Page(store, {
         collectionText: '加入书架',
         bookList: [],
         flage: false,
+        scrollTop: 10,
     },
     send(e) {
         this.setData({
             indexItem: e.detail
+        })
+        this.setData({
+            scrollTop: 10
         })
 
     },
@@ -214,7 +218,6 @@ create.Page(store, {
         if (wx.getStorageSync('bookList')) {
             this.data.bookList = wx.getStorageSync('bookList');
             this.store.data.bookList = wx.getStorageSync('bookList');
-            console.log(store.data.bookList);
             // console.log(wx.getStorageInfoSync('keys').bookList);
             this.data.flage = this.data.bookList.some(item => {
                 return item._id === this.data.bookDateils._id

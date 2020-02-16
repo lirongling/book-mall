@@ -1,3 +1,6 @@
+<view class="tabs">
+  <tabs arr="{{arr}}" bind:send="send" color=""></tabs>
+</view>
 <view class="content" id="index-nav">
   <view class="content-item" wx:for="{{booksData}}" wx:key="index">
     <booksDetails details="{{item}}" wx:if="{{index<bookIdx}}"></booksDetails>

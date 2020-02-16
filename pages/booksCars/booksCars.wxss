@@ -1,1 +1,11 @@
-/* pages/booksCars/booksCars.wxss */
+.tabs {
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    top: 0;
+    background: rgb(235, 229, 229);
+}
+
+.content {
+    margin-top: 85rpx;
+}

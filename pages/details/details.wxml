@@ -24,7 +24,7 @@
       <view class="tabs">
         <tabs arr="{{arr}}" bind:send="send" color="white"></tabs>
       </view>
-      <scroll-view enable-back-to-top="true" scroll-y="true" style="height: 730rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <scroll-view enable-back-to-top="true" scroll-y="true" style="height:50vh;" lower-threshold="{{160}}" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <view class="content" wx:if="{{indexItem===0}}">简介：{{bookDateils.longIntro}}</view>
         <view class="content" wx:else>
           <comments shortReview="{{shortReview}}"></comments>
